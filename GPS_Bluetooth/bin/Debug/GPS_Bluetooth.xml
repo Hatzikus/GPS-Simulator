@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <BT_Device_Address>A0DD6CB8C80A</BT_Device_Address>
+  <Port_Simulate>com7</Port_Simulate>
+  <Simulate>
+    <iFixType>3</iFixType>
+    <strNumSV>32</strNumSV>
+    <hAcc>14</hAcc>
+    <vAcc>10</vAcc>
+    <bSend>true</bSend>
+    <dLatitude_Center>14.96257439327519</dLatitude_Center>
+    <dLongitude_Center>46.931013286096196</dLongitude_Center>
+    <dMSL_Center>1137</dMSL_Center>
+    <dLatitude>14.96257439327519</dLatitude>
+    <dLongitude>46.931013286096196</dLongitude>
+    <dMSL>1137</dMSL>
+  </Simulate>
+</Configuration>

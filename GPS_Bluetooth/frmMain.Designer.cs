@@ -1,0 +1,437 @@
+﻿namespace GPS_Bluetooth
+{
+	partial class frmMain
+	{
+		/// <summary>
+		/// Required designer variable.
+		/// </summary>
+		private System.ComponentModel.IContainer components = null;
+
+		/// <summary>
+		/// Clean up any resources being used.
+		/// </summary>
+		/// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+		protected override void Dispose(bool disposing)
+		{
+			if (disposing && (components != null))
+			{
+				components.Dispose();
+			}
+			base.Dispose(disposing);
+		}
+
+		#region Windows Form Designer generated code
+
+		/// <summary>
+		/// Required method for Designer support - do not modify
+		/// the contents of this method with the code editor.
+		/// </summary>
+		private void InitializeComponent()
+		{
+            this.components = new System.ComponentModel.Container();
+            this.btSearchBluetooth = new System.Windows.Forms.Button();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lbDevices = new System.Windows.Forms.ListBox();
+            this.btPair = new System.Windows.Forms.Button();
+            this.btConnect = new System.Windows.Forms.Button();
+            this.tbDeviceAddress = new System.Windows.Forms.TextBox();
+            this.tbLatitude = new System.Windows.Forms.TextBox();
+            this.tbLongitude = new System.Windows.Forms.TextBox();
+            this.tbHeight = new System.Windows.Forms.TextBox();
+            this.tbMSL = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.cbFixType = new System.Windows.Forms.ComboBox();
+            this.tbNumSV = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbHAcc = new System.Windows.Forms.TextBox();
+            this.tbVAcc = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cbSamplePoint = new System.Windows.Forms.CheckBox();
+            this.tbCRC_Error = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.btCenter = new System.Windows.Forms.Button();
+            this.userControl12 = new GPS_Bluetooth.UserControl1();
+            this.userControl11 = new GPS_Bluetooth.UserControl1();
+            this.btSimulator = new System.Windows.Forms.Button();
+            this.zoomOutBtn = new System.Windows.Forms.Button();
+            this.zoomInBtn = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btSearchBluetooth
+            // 
+            this.btSearchBluetooth.Location = new System.Drawing.Point(740, 23);
+            this.btSearchBluetooth.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btSearchBluetooth.Name = "btSearchBluetooth";
+            this.btSearchBluetooth.Size = new System.Drawing.Size(268, 69);
+            this.btSearchBluetooth.TabIndex = 0;
+            this.btSearchBluetooth.Text = "Suche Bluetooth Geräte";
+            this.btSearchBluetooth.UseVisualStyleBackColor = true;
+            this.btSearchBluetooth.Click += new System.EventHandler(this.btSearchBluetooth_Click);
+            // 
+            // lbDevices
+            // 
+            this.lbDevices.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbDevices.FormattingEnabled = true;
+            this.lbDevices.ItemHeight = 37;
+            this.lbDevices.Location = new System.Drawing.Point(24, 23);
+            this.lbDevices.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.lbDevices.Name = "lbDevices";
+            this.lbDevices.Size = new System.Drawing.Size(700, 189);
+            this.lbDevices.TabIndex = 1;
+            this.lbDevices.SelectedIndexChanged += new System.EventHandler(this.lbDevices_SelectedIndexChanged);
+            // 
+            // btPair
+            // 
+            this.btPair.Location = new System.Drawing.Point(740, 104);
+            this.btPair.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btPair.Name = "btPair";
+            this.btPair.Size = new System.Drawing.Size(268, 69);
+            this.btPair.TabIndex = 2;
+            this.btPair.Text = "Pair";
+            this.btPair.UseVisualStyleBackColor = true;
+            this.btPair.Click += new System.EventHandler(this.btPair_Click);
+            // 
+            // btConnect
+            // 
+            this.btConnect.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btConnect.Location = new System.Drawing.Point(740, 185);
+            this.btConnect.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btConnect.Name = "btConnect";
+            this.btConnect.Size = new System.Drawing.Size(268, 69);
+            this.btConnect.TabIndex = 3;
+            this.btConnect.Text = "Connect";
+            this.btConnect.UseVisualStyleBackColor = true;
+            this.btConnect.Click += new System.EventHandler(this.btConnect_Click);
+            // 
+            // tbDeviceAddress
+            // 
+            this.tbDeviceAddress.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.tbDeviceAddress.Location = new System.Drawing.Point(24, 238);
+            this.tbDeviceAddress.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbDeviceAddress.Name = "tbDeviceAddress";
+            this.tbDeviceAddress.Size = new System.Drawing.Size(700, 44);
+            this.tbDeviceAddress.TabIndex = 4;
+            // 
+            // tbLatitude
+            // 
+            this.tbLatitude.Location = new System.Drawing.Point(178, 300);
+            this.tbLatitude.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbLatitude.Name = "tbLatitude";
+            this.tbLatitude.Size = new System.Drawing.Size(260, 31);
+            this.tbLatitude.TabIndex = 5;
+            // 
+            // tbLongitude
+            // 
+            this.tbLongitude.Location = new System.Drawing.Point(178, 350);
+            this.tbLongitude.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbLongitude.Name = "tbLongitude";
+            this.tbLongitude.Size = new System.Drawing.Size(260, 31);
+            this.tbLongitude.TabIndex = 6;
+            // 
+            // tbHeight
+            // 
+            this.tbHeight.Location = new System.Drawing.Point(178, 400);
+            this.tbHeight.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbHeight.Name = "tbHeight";
+            this.tbHeight.Size = new System.Drawing.Size(260, 31);
+            this.tbHeight.TabIndex = 7;
+            // 
+            // tbMSL
+            // 
+            this.tbMSL.Location = new System.Drawing.Point(178, 452);
+            this.tbMSL.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbMSL.Name = "tbMSL";
+            this.tbMSL.Size = new System.Drawing.Size(260, 31);
+            this.tbMSL.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 306);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 25);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Latitude";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(24, 356);
+            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(107, 25);
+            this.label2.TabIndex = 10;
+            this.label2.Text = "Longitude";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 406);
+            this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(74, 25);
+            this.label3.TabIndex = 11;
+            this.label3.Text = "Height";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(24, 458);
+            this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 25);
+            this.label4.TabIndex = 12;
+            this.label4.Text = "MSL";
+            // 
+            // cbFixType
+            // 
+            this.cbFixType.FormattingEnabled = true;
+            this.cbFixType.Items.AddRange(new object[] {
+            "no fix",
+            "dead reckoning only",
+            "2D-fix",
+            "3D-fix",
+            "GNSS + dead reckoning combined",
+            "time only fix"});
+            this.cbFixType.Location = new System.Drawing.Point(454, 300);
+            this.cbFixType.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbFixType.Name = "cbFixType";
+            this.cbFixType.Size = new System.Drawing.Size(270, 33);
+            this.cbFixType.TabIndex = 13;
+            // 
+            // tbNumSV
+            // 
+            this.tbNumSV.Location = new System.Drawing.Point(598, 350);
+            this.tbNumSV.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbNumSV.Name = "tbNumSV";
+            this.tbNumSV.Size = new System.Drawing.Size(126, 31);
+            this.tbNumSV.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(454, 358);
+            this.label5.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(84, 25);
+            this.label5.TabIndex = 15;
+            this.label5.Text = "NumSV";
+            // 
+            // tbHAcc
+            // 
+            this.tbHAcc.Location = new System.Drawing.Point(598, 400);
+            this.tbHAcc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbHAcc.Name = "tbHAcc";
+            this.tbHAcc.Size = new System.Drawing.Size(126, 31);
+            this.tbHAcc.TabIndex = 16;
+            // 
+            // tbVAcc
+            // 
+            this.tbVAcc.Location = new System.Drawing.Point(598, 452);
+            this.tbVAcc.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbVAcc.Name = "tbVAcc";
+            this.tbVAcc.Size = new System.Drawing.Size(126, 31);
+            this.tbVAcc.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(454, 406);
+            this.label6.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 25);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "hAcc (mm)";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(454, 458);
+            this.label7.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(113, 25);
+            this.label7.TabIndex = 19;
+            this.label7.Text = "vAcc (mm)";
+            // 
+            // cbSamplePoint
+            // 
+            this.cbSamplePoint.AutoSize = true;
+            this.cbSamplePoint.Location = new System.Drawing.Point(740, 331);
+            this.cbSamplePoint.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbSamplePoint.Name = "cbSamplePoint";
+            this.cbSamplePoint.Size = new System.Drawing.Size(171, 29);
+            this.cbSamplePoint.TabIndex = 20;
+            this.cbSamplePoint.Text = "Sample Point";
+            this.cbSamplePoint.UseVisualStyleBackColor = true;
+            // 
+            // tbCRC_Error
+            // 
+            this.tbCRC_Error.Location = new System.Drawing.Point(866, 363);
+            this.tbCRC_Error.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.tbCRC_Error.Name = "tbCRC_Error";
+            this.tbCRC_Error.Size = new System.Drawing.Size(138, 31);
+            this.tbCRC_Error.TabIndex = 21;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(740, 369);
+            this.label8.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(116, 25);
+            this.label8.TabIndex = 22;
+            this.label8.Text = "CRC Error:";
+            // 
+            // btCenter
+            // 
+            this.btCenter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.btCenter.Location = new System.Drawing.Point(740, 413);
+            this.btCenter.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btCenter.Name = "btCenter";
+            this.btCenter.Size = new System.Drawing.Size(130, 98);
+            this.btCenter.TabIndex = 25;
+            this.btCenter.Text = "Center";
+            this.btCenter.UseVisualStyleBackColor = true;
+            this.btCenter.Click += new System.EventHandler(this.btCenter_Click);
+            // 
+            // userControl12
+            // 
+            this.userControl12.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.userControl12.Location = new System.Drawing.Point(30, 523);
+            this.userControl12.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.userControl12.Name = "userControl12";
+            this.userControl12.ShowCurrentPosition = false;
+            this.userControl12.Size = new System.Drawing.Size(978, 381);
+            this.userControl12.TabIndex = 24;
+            this.userControl12.Zoomed = false;
+            // 
+            // userControl11
+            // 
+            this.userControl11.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControl11.Location = new System.Drawing.Point(1020, 23);
+            this.userControl11.Margin = new System.Windows.Forms.Padding(12, 12, 12, 12);
+            this.userControl11.Name = "userControl11";
+            this.userControl11.ShowCurrentPosition = false;
+            this.userControl11.Size = new System.Drawing.Size(804, 881);
+            this.userControl11.TabIndex = 23;
+            this.userControl11.Zoomed = false;
+            // 
+            // btSimulator
+            // 
+            this.btSimulator.Location = new System.Drawing.Point(740, 265);
+            this.btSimulator.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btSimulator.Name = "btSimulator";
+            this.btSimulator.Size = new System.Drawing.Size(268, 54);
+            this.btSimulator.TabIndex = 27;
+            this.btSimulator.Text = "Simulator";
+            this.btSimulator.UseVisualStyleBackColor = true;
+            this.btSimulator.Click += new System.EventHandler(this.btSimulator_Click);
+            // 
+            // zoomOutBtn
+            // 
+            this.zoomOutBtn.Location = new System.Drawing.Point(898, 464);
+            this.zoomOutBtn.Name = "zoomOutBtn";
+            this.zoomOutBtn.Size = new System.Drawing.Size(106, 44);
+            this.zoomOutBtn.TabIndex = 39;
+            this.zoomOutBtn.Text = "+";
+            this.zoomOutBtn.UseVisualStyleBackColor = true;
+            this.zoomOutBtn.Click += new System.EventHandler(this.zoomOutBtn_Click);
+            // 
+            // zoomInBtn
+            // 
+            this.zoomInBtn.Location = new System.Drawing.Point(898, 413);
+            this.zoomInBtn.Name = "zoomInBtn";
+            this.zoomInBtn.Size = new System.Drawing.Size(106, 45);
+            this.zoomInBtn.TabIndex = 38;
+            this.zoomInBtn.Text = "-";
+            this.zoomInBtn.UseVisualStyleBackColor = true;
+            this.zoomInBtn.Click += new System.EventHandler(this.zoomInBtn_Click);
+            // 
+            // frmMain
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1848, 927);
+            this.Controls.Add(this.zoomOutBtn);
+            this.Controls.Add(this.zoomInBtn);
+            this.Controls.Add(this.btSimulator);
+            this.Controls.Add(this.btCenter);
+            this.Controls.Add(this.userControl12);
+            this.Controls.Add(this.userControl11);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.tbCRC_Error);
+            this.Controls.Add(this.cbSamplePoint);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.tbVAcc);
+            this.Controls.Add(this.tbHAcc);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.tbNumSV);
+            this.Controls.Add(this.cbFixType);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tbMSL);
+            this.Controls.Add(this.tbHeight);
+            this.Controls.Add(this.tbLongitude);
+            this.Controls.Add(this.tbLatitude);
+            this.Controls.Add(this.tbDeviceAddress);
+            this.Controls.Add(this.btConnect);
+            this.Controls.Add(this.btPair);
+            this.Controls.Add(this.lbDevices);
+            this.Controls.Add(this.btSearchBluetooth);
+            this.DoubleBuffered = true;
+            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Name = "frmMain";
+            this.Text = "Form1";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
+            this.Resize += new System.EventHandler(this.frmMain_Resize);
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+		}
+
+		#endregion
+
+		private System.Windows.Forms.Button btSearchBluetooth;
+		private System.Windows.Forms.Timer timer1;
+		private System.Windows.Forms.ListBox lbDevices;
+		private System.Windows.Forms.Button btPair;
+		private System.Windows.Forms.Button btConnect;
+		private System.Windows.Forms.TextBox tbDeviceAddress;
+		private System.Windows.Forms.TextBox tbLatitude;
+		private System.Windows.Forms.TextBox tbLongitude;
+		private System.Windows.Forms.TextBox tbHeight;
+		private System.Windows.Forms.TextBox tbMSL;
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Label label2;
+		private System.Windows.Forms.Label label3;
+		private System.Windows.Forms.Label label4;
+		private System.Windows.Forms.ComboBox cbFixType;
+		private System.Windows.Forms.TextBox tbNumSV;
+		private System.Windows.Forms.Label label5;
+		private System.Windows.Forms.TextBox tbHAcc;
+		private System.Windows.Forms.TextBox tbVAcc;
+		private System.Windows.Forms.Label label6;
+		private System.Windows.Forms.Label label7;
+		private System.Windows.Forms.CheckBox cbSamplePoint;
+		private System.Windows.Forms.TextBox tbCRC_Error;
+		private System.Windows.Forms.Label label8;
+		private UserControl1 userControl11;
+		private UserControl1 userControl12;
+		private System.Windows.Forms.Button btCenter;
+		private System.Windows.Forms.Button btSimulator;
+        private System.Windows.Forms.Button zoomOutBtn;
+        private System.Windows.Forms.Button zoomInBtn;
+    }
+}
+
