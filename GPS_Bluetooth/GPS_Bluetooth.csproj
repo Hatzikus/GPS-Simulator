@@ -65,6 +65,12 @@
     <Compile Include="frmSimulator.Designer.cs">
       <DependentUpon>frmSimulator.cs</DependentUpon>
     </Compile>
+    <Compile Include="NewLocationSelector.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NewLocationSelector.Designer.cs">
+      <DependentUpon>NewLocationSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UserControl1.cs">
@@ -78,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmSimulator.resx">
       <DependentUpon>frmSimulator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NewLocationSelector.resx">
+      <DependentUpon>NewLocationSelector.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

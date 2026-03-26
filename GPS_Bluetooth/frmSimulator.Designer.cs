@@ -41,6 +41,7 @@
             this.zoomInBtn = new System.Windows.Forms.Button();
             this.zoomOutBtn = new System.Windows.Forms.Button();
             this.centerBtn = new System.Windows.Forms.Button();
+            this.samplePoint = new System.Windows.Forms.CheckBox();
             this.userControl12 = new GPS_Bluetooth.UserControl1();
             this.userControl11 = new GPS_Bluetooth.UserControl1();
             this.SuspendLayout();
@@ -176,25 +177,38 @@
             this.centerBtn.UseVisualStyleBackColor = true;
             this.centerBtn.Click += new System.EventHandler(this.centerBtn_Click);
             // 
+            // samplePoint
+            // 
+            this.samplePoint.AutoSize = true;
+            this.samplePoint.Location = new System.Drawing.Point(1798, 29);
+            this.samplePoint.Margin = new System.Windows.Forms.Padding(6);
+            this.samplePoint.Name = "samplePoint";
+            this.samplePoint.Size = new System.Drawing.Size(116, 29);
+            this.samplePoint.TabIndex = 39;
+            this.samplePoint.Text = "Sample";
+            this.samplePoint.UseVisualStyleBackColor = true;
+            this.samplePoint.CheckedChanged += new System.EventHandler(this.samplePoint_CheckedChanged);
+            // 
             // userControl12
             // 
-            this.userControl12.Location = new System.Drawing.Point(12, 73);
+            this.userControl12.Location = new System.Drawing.Point(12, 76);
             this.userControl12.Margin = new System.Windows.Forms.Padding(12);
             this.userControl12.Name = "userControl12";
             this.userControl12.ShowCurrentPosition = false;
-            this.userControl12.Size = new System.Drawing.Size(200, 604);
+            this.userControl12.Size = new System.Drawing.Size(293, 612);
             this.userControl12.TabIndex = 25;
             this.userControl12.Zoomed = false;
             // 
             // userControl11
             // 
-            this.userControl11.Location = new System.Drawing.Point(224, 73);
+            this.userControl11.Location = new System.Drawing.Point(317, 76);
             this.userControl11.Margin = new System.Windows.Forms.Padding(12);
             this.userControl11.Name = "userControl11";
             this.userControl11.ShowCurrentPosition = false;
-            this.userControl11.Size = new System.Drawing.Size(1132, 604);
+            this.userControl11.Size = new System.Drawing.Size(1665, 612);
             this.userControl11.TabIndex = 24;
             this.userControl11.Zoomed = false;
+            this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
             this.userControl11.MouseDown += new System.Windows.Forms.MouseEventHandler(this.userControl11_MouseDown);
             this.userControl11.MouseEnter += new System.EventHandler(this.userControl11_MouseEnter);
             this.userControl11.MouseLeave += new System.EventHandler(this.userControl11_MouseLeave);
@@ -207,6 +221,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1994, 700);
+            this.Controls.Add(this.samplePoint);
             this.Controls.Add(this.centerBtn);
             this.Controls.Add(this.zoomOutBtn);
             this.Controls.Add(this.zoomInBtn);
@@ -251,5 +266,6 @@
         private System.Windows.Forms.Button zoomInBtn;
         private System.Windows.Forms.Button zoomOutBtn;
         private System.Windows.Forms.Button centerBtn;
+        private System.Windows.Forms.CheckBox samplePoint;
     }
 }

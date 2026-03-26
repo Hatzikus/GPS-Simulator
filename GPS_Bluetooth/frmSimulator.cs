@@ -77,7 +77,10 @@ namespace GPS_Bluetooth
 			m_strWrite = "";
 			m_datLast_Send_BTData = DateTime.MinValue;
 			m_bSend_BTData = false;
-		}
+
+			userControl11.SetCenterToPosition();
+			userControl12.SetCenterToPosition();
+        }
 		public void SetPort(string strPort)
 		{
 			tbPort.Text = strPort;
@@ -95,7 +98,8 @@ namespace GPS_Bluetooth
 
 		private void frmSimulator_Resize(object sender, EventArgs e)
 		{
-			LayoutControls();
+			if (!DesignMode)
+				LayoutControls();
 		}
 
 		private void LayoutControls()
@@ -252,8 +256,10 @@ namespace GPS_Bluetooth
 				subitem.Tag = 1;
 				subitem = item.MenuItems.Add("Chile T-Skidder Einsatz 1", frmSimulator_OnContextMenu);
 				subitem.Tag = 2;
+				subitem = item.MenuItems.Add("Other", frmSimulator_OnContextMenu);
+				subitem.Tag = 3;
 
-				item = cContextMenu.MenuItems.Add("Tests");
+                item = cContextMenu.MenuItems.Add("Tests");
 				subitem = item.MenuItems.Add("/info", frmSimulator_OnContextMenu);
 				subitem.Tag = 100;
 				subitem = item.MenuItems.Add("/btdata", frmSimulator_OnContextMenu);
@@ -280,7 +286,14 @@ namespace GPS_Bluetooth
 				case 2:
 					userControl11.SetCurrentPosition(-72.94362021260869, -39.23945692522164, 300, true);
 					break;
-				case 100:
+				case 3:
+					using (NewLocationSelector dlg = new NewLocationSelector())
+					{
+						if (dlg.ShowDialog(this) == DialogResult.OK)
+							userControl11.SetCurrentPosition(dlg.Latitude, dlg.Longitude, dlg.SML, true);
+					}
+					break;
+                case 100:
 					m_strWrite = "/info";
 					break;
 				case 101:
@@ -303,6 +316,8 @@ namespace GPS_Bluetooth
 			ushort		crc;
 			byte		byteVal;
 			UInt32		ui32Val;
+
+			m_byteArrayBT_Data[8 + 3] = (byte)(samplePoint.Checked ? 0x01 : 0x00);
 
 			Buffer2Array(BitConverter.GetBytes(userControl11.m_dLatitude), m_byteArrayBT_Data, 8 + 16);
 			Buffer2Array(BitConverter.GetBytes(userControl11.m_dLongitude), m_byteArrayBT_Data, 8 + 24);
@@ -378,7 +393,8 @@ namespace GPS_Bluetooth
 
 		private void frmSimulator_Load(object sender, EventArgs e)
 		{
-			LayoutControls();
+			if (!DesignMode)
+				LayoutControls();
 		}
 
 		public void SaveSettings()
@@ -418,6 +434,16 @@ namespace GPS_Bluetooth
         {
 			userControl11.SetCenterToPosition();
             userControl12.SetCenterToPosition();
+        }
+
+        private void samplePoint_CheckedChanged(object sender, EventArgs e)
+		{
+
+        }
+
+        private void userControl11_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

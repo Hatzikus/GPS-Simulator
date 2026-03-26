@@ -8,11 +8,11 @@
     <hAcc>14</hAcc>
     <vAcc>10</vAcc>
     <bSend>true</bSend>
-    <dLatitude_Center>14.96257439327519</dLatitude_Center>
-    <dLongitude_Center>46.931013286096196</dLongitude_Center>
-    <dMSL_Center>1137</dMSL_Center>
-    <dLatitude>14.96257439327519</dLatitude>
-    <dLongitude>46.931013286096196</dLongitude>
-    <dMSL>1137</dMSL>
+    <dLatitude_Center>14.959585193110097</dLatitude_Center>
+    <dLongitude_Center>46.93559723901172</dLongitude_Center>
+    <dMSL_Center>1143</dMSL_Center>
+    <dLatitude>14.959639418974426</dLatitude>
+    <dLongitude>46.935513573072654</dLongitude>
+    <dMSL>1144</dMSL>
   </Simulate>
 </Configuration>

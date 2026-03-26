@@ -26,3 +26,19 @@ C:\Users\stefa\OneDrive\Desktop\GPS_Bluetooth\GPS_Bluetooth\obj\Debug\GPS_Blueto
 C:\Users\stefa\OneDrive\Desktop\GPS_Bluetooth\GPS_Bluetooth\obj\Debug\GPS_Blue.122EC3E8.Up2Date
 C:\Users\stefa\OneDrive\Desktop\GPS_Bluetooth\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.exe
 C:\Users\stefa\OneDrive\Desktop\GPS_Bluetooth\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.pdb
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\bin\Debug\GPS_Bluetooth.exe.config
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\bin\Debug\GPS_Bluetooth.exe
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\bin\Debug\GPS_Bluetooth.pdb
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\bin\Debug\InTheHand.Net.Personal.dll
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\bin\Debug\InTheHand.Net.Personal.xml
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.csproj.AssemblyReference.cache
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.frmMain.resources
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.frmSimulator.resources
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.Properties.Resources.resources
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.UserControl1.resources
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.csproj.GenerateResource.cache
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.csproj.CoreCompileInputs.cache
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Blue.122EC3E8.Up2Date
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.exe
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.pdb
+C:\Users\stefa\OneDrive\Dokumente\Arbeit\GPS Simulator\GPS_Bluetooth\obj\Debug\GPS_Bluetooth.NewLocationSelector.resources

@@ -236,24 +236,32 @@ namespace GPS_Bluetooth
 
 		private void ListClients()
 		{
-			structBL					structX;
-			List<structBL>				listNewClients;
-
-			m_bSearching = true;
-
-			InTheHand.Net.Sockets.BluetoothClient client = new InTheHand.Net.Sockets.BluetoothClient();
-			List<string> items = new List<string>();
-			InTheHand.Net.Sockets.BluetoothDeviceInfo[] devices = client.DiscoverDevicesInRange();
-			listNewClients = new List<structBL>();
-			structX = new structBL();
-			foreach (InTheHand.Net.Sockets.BluetoothDeviceInfo d in devices)
+			try
 			{
-				structX.strName = d.DeviceName;
-				structX.Address = d.DeviceAddress;
-				structX.bConnected = d.Connected;
-				listNewClients.Add(structX);
+				structBL structX;
+				List<structBL> listNewClients;
+
+				m_bSearching = true;
+
+				InTheHand.Net.Sockets.BluetoothClient client = new InTheHand.Net.Sockets.BluetoothClient();
+				List<string> items = new List<string>();
+				InTheHand.Net.Sockets.BluetoothDeviceInfo[] devices = client.DiscoverDevicesInRange();
+				listNewClients = new List<structBL>();
+				structX = new structBL();
+				foreach (InTheHand.Net.Sockets.BluetoothDeviceInfo d in devices)
+				{
+					structX.strName = d.DeviceName;
+					structX.Address = d.DeviceAddress;
+					structX.bConnected = d.Connected;
+					listNewClients.Add(structX);
+				}
+				m_listNewClients = listNewClients;
 			}
-			m_listNewClients = listNewClients;
+			catch (Exception e)
+			{
+				MessageBox.Show(this, "Error Search Bluetooth", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 			m_bSearching = false;
 		}
 
@@ -267,21 +275,28 @@ namespace GPS_Bluetooth
 
 		private void btPair_Click(object sender, EventArgs e)
 		{
-			InTheHand.Net.Sockets.BluetoothDeviceInfo	d;
-			InTheHand.Net.BluetoothAddress				Address;
-
-			Address = m_listClients[lbDevices.SelectedIndex].Address;
-
-			d = new InTheHand.Net.Sockets.BluetoothDeviceInfo(Address);
-
-			bool pairResult = InTheHand.Net.Bluetooth.BluetoothSecurity.PairRequest(Address, null);
-			if (pairResult)
+			try
 			{
-				Console.WriteLine("Success");
+				InTheHand.Net.Sockets.BluetoothDeviceInfo d;
+				InTheHand.Net.BluetoothAddress Address;
+
+				Address = m_listClients[lbDevices.SelectedIndex].Address;
+
+				d = new InTheHand.Net.Sockets.BluetoothDeviceInfo(Address);
+
+				bool pairResult = InTheHand.Net.Bluetooth.BluetoothSecurity.PairRequest(Address, null);
+				if (pairResult)
+				{
+					Console.WriteLine("Success");
+				}
+				else
+				{
+					Console.WriteLine("Fail"); // Instantly fails
+				}
 			}
-			else
+			catch (Exception ex)
 			{
-				Console.WriteLine("Fail"); // Instantly fails
+				MessageBox.Show(this, "Error Pair Bluetooth", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
 
@@ -344,15 +359,15 @@ namespace GPS_Bluetooth
 				arrayAddress[i] = arrayTemp[arrayTemp.Length - i - 1];
 			Address = new InTheHand.Net.BluetoothAddress(arrayAddress);
 
-			m_Client = new InTheHand.Net.Sockets.BluetoothClient();
-			try
-			{
+            try
+            {
+                m_Client = new InTheHand.Net.Sockets.BluetoothClient();
 				m_Client.Connect(Address, InTheHand.Net.Bluetooth.BluetoothService.SerialPort);
 			}
 			catch (Exception err)
 			{
 				MessageBox.Show(this, "Error Connect", err.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
-				m_Client.Dispose();
+				try { m_Client.Dispose(); } catch { /* ignore */ }
 				m_Client = null;
 			}
 

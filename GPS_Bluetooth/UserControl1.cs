@@ -21,7 +21,7 @@ namespace GPS_Bluetooth
 		public double		m_dLongitude;
 		public double		m_dMSL;
 
-		private bool		m_bNextWillBeTheCenter;
+        private bool		m_bNextWillBeTheCenter;
 		private double		m_dOffset_X;
 		private double		m_dOffset_Y;
 		private double		m_dOffset_Z;

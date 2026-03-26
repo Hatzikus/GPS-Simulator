@@ -1,34 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\",
+  "WorkspaceRootPath": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmsimulator.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\usercontrol1.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:usercontrol1.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\dokumente\\arbeit\\gps simulator\\gps_bluetooth\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmmain.designer.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmmain.designer.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|c:\\users\\stefa\\onedrive\\desktop\\gps_bluetooth\\gps_bluetooth\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\newlocationselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:newlocationselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\newlocationselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:newlocationselector.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\usercontrol1.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:usercontrol1.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmsimulator.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmsimulator.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmmain.designer.cs||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{5A415C96-B1AC-482E-A67D-09DF9CF05018}|GPS_Bluetooth.csproj|solutionrelative:frmmain.designer.cs||{8B382828-6202-11D1-8870-0000F87579D2}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,96 +46,113 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "frmMain.cs [Entwurf]",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.cs",
-              "RelativeDocumentMoniker": "frmMain.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.cs [Entwurf]",
-              "RelativeToolTip": "frmMain.cs [Entwurf]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T09:45:44.579Z",
-              "EditorCaption": " [Entwurf]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "frmSimulator.cs [Entwurf]",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.cs",
-              "RelativeDocumentMoniker": "frmSimulator.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.cs [Entwurf]",
-              "RelativeToolTip": "frmSimulator.cs [Entwurf]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:18:43.813Z",
-              "EditorCaption": " [Entwurf]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "frmMain.cs",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.cs",
-              "RelativeDocumentMoniker": "frmMain.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.cs",
-              "RelativeToolTip": "frmMain.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAAAEcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:33:35.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "UserControl1.cs",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\UserControl1.cs",
-              "RelativeDocumentMoniker": "UserControl1.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\UserControl1.cs",
-              "RelativeToolTip": "UserControl1.cs",
-              "ViewState": "AgIAAHQAAAAAAAAAAAAYwCMAAAAXAAAAAAAAAA==",
+              "Title": "NewLocationSelector.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\NewLocationSelector.cs",
+              "RelativeDocumentMoniker": "NewLocationSelector.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\NewLocationSelector.cs [Entwurf]",
+              "RelativeToolTip": "NewLocationSelector.cs [Entwurf]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:18:54.939Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "frmSimulator.cs",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.cs",
-              "RelativeDocumentMoniker": "frmSimulator.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.cs",
-              "RelativeToolTip": "frmSimulator.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAvwGcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T08:18:50.148Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T07:06:40.2Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "frmSimulator.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.Designer.cs",
-              "RelativeDocumentMoniker": "frmSimulator.Designer.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmSimulator.Designer.cs",
-              "RelativeToolTip": "frmSimulator.Designer.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAADgvwAAAAAAAAAAAAAAAA==",
+              "Title": "frmSimulator.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.cs",
+              "RelativeDocumentMoniker": "frmSimulator.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.cs",
+              "RelativeToolTip": "frmSimulator.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAADwv1EAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T10:21:23.642Z",
+              "WhenOpened": "2026-03-20T08:18:50.148Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "frmMain.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.cs",
+              "RelativeDocumentMoniker": "frmMain.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.cs",
+              "RelativeToolTip": "frmMain.cs",
+              "ViewState": "AgIAAGcBAAAAAAAAAAAQwHEBAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T08:59:02.087Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "frmMain.Designer.cs",
-              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.Designer.cs",
-              "RelativeDocumentMoniker": "frmMain.Designer.cs",
-              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Desktop\\GPS_Bluetooth\\GPS_Bluetooth\\frmMain.Designer.cs",
-              "RelativeToolTip": "frmMain.Designer.cs",
-              "ViewState": "AgIAAKABAAAAAAAAAAAEwKwBAAAWAAAAAAAAAA==",
+              "Title": "NewLocationSelector.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\NewLocationSelector.cs",
+              "RelativeDocumentMoniker": "NewLocationSelector.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\NewLocationSelector.cs",
+              "RelativeToolTip": "NewLocationSelector.cs",
+              "ViewState": "AgIAABUAAAAAAAAAAADwvyQAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-20T10:08:22.015Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-23T07:41:43.067Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "frmSimulator.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.cs",
+              "RelativeDocumentMoniker": "frmSimulator.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.cs [Entwurf]",
+              "RelativeToolTip": "frmSimulator.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T11:35:58.444Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "frmMain.cs [Entwurf]",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.cs",
+              "RelativeDocumentMoniker": "frmMain.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.cs [Entwurf]",
+              "RelativeToolTip": "frmMain.cs [Entwurf]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-23T08:58:58.281Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserControl1.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\UserControl1.cs",
+              "RelativeDocumentMoniker": "UserControl1.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\UserControl1.cs",
+              "RelativeToolTip": "UserControl1.cs",
+              "ViewState": "AgIAAJ8AAAAAAAAAAAAIwK0AAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T08:18:54.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "frmSimulator.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.Designer.cs",
+              "RelativeDocumentMoniker": "frmSimulator.Designer.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmSimulator.Designer.cs",
+              "RelativeToolTip": "frmSimulator.Designer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T10:21:23.642Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "frmMain.Designer.cs",
+              "DocumentMoniker": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.Designer.cs",
+              "RelativeDocumentMoniker": "frmMain.Designer.cs",
+              "ToolTip": "C:\\Users\\stefa\\OneDrive\\Dokumente\\Arbeit\\GPS Simulator\\GPS_Bluetooth\\frmMain.Designer.cs",
+              "RelativeToolTip": "frmMain.Designer.cs",
+              "ViewState": "AgIAAJQBAAAAAAAAAAAUwKwBAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-20T10:08:22.015Z"
             }
           ]
         }
