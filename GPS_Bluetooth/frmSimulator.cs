@@ -40,7 +40,9 @@ namespace GPS_Bluetooth
 			userControl11.LinkObject(userControl12);
 
 			userControl11.MouseWheel += new MouseEventHandler(userControl11_MouseWheel);
+			receiverCheck.CheckedChanged += receiverCheck_CheckedChanged;
 
+			PopulateFixTypeItems();
 			if (cbFixType.Items.Count > m_config.Simulate.iFixType)
 				cbFixType.SelectedIndex = m_config.Simulate.iFixType;
 			tbNumSV.Text = m_config.Simulate.strNumSV;
@@ -317,7 +319,11 @@ namespace GPS_Bluetooth
 			byte		byteVal;
 			UInt32		ui32Val;
 
-			m_byteArrayBT_Data[8 + 3] = (byte)(samplePoint.Checked ? 0x01 : 0x00);
+			byte byteFlags = 0x00;
+			if (samplePoint.Checked)    byteFlags |= 0x01;
+			if (receiverCheck.Checked)  byteFlags |= 0x02;
+			if (rtkCheck.Checked)       byteFlags |= 0x04;
+			m_byteArrayBT_Data[8 + 3] = byteFlags;
 
 			Buffer2Array(BitConverter.GetBytes(userControl11.m_dLatitude), m_byteArrayBT_Data, 8 + 16);
 			Buffer2Array(BitConverter.GetBytes(userControl11.m_dLongitude), m_byteArrayBT_Data, 8 + 24);
@@ -328,7 +334,11 @@ namespace GPS_Bluetooth
 				Buffer2Array(BitConverter.GetBytes(ui32Val), m_byteArrayBT_Data, 8 + 48);
 			if (UInt32.TryParse(tbVAcc.Text, out ui32Val))
 				Buffer2Array(BitConverter.GetBytes(ui32Val), m_byteArrayBT_Data, 8 + 52);
-			Buffer2Array(BitConverter.GetBytes((byte)cbFixType.SelectedIndex), m_byteArrayBT_Data, 8 + 56);
+			byte fixTypeValue = 0;
+			fixType selectedFixType = cbFixType.SelectedItem as fixType;
+			if (selectedFixType != null)
+				fixTypeValue = (byte)selectedFixType.Value;
+			Buffer2Array(BitConverter.GetBytes(fixTypeValue), m_byteArrayBT_Data, 8 + 56);
 			if (byte.TryParse(tbNumSV.Text, out byteVal))
 				Buffer2Array(BitConverter.GetBytes(byteVal), m_byteArrayBT_Data, 8 + 57);
 
@@ -436,10 +446,56 @@ namespace GPS_Bluetooth
             userControl12.SetCenterToPosition();
         }
 
-        private void samplePoint_CheckedChanged(object sender, EventArgs e)
+		private void samplePoint_CheckedChanged(object sender, EventArgs e)
 		{
 
-        }
+		}
+
+		private void receiverCheck_CheckedChanged(object sender, EventArgs e)
+		{
+			PopulateFixTypeItems();
+		}
+
+		private void PopulateFixTypeItems()
+		{
+			cbFixType.Items.Clear();
+			if (receiverCheck.Checked)
+			{
+				cbFixType.Items.Add(new fixType(0, "No solution"));
+				cbFixType.Items.Add(new fixType(1, "Position has been fixed by the FIX position position command or by position averaging."));
+				cbFixType.Items.Add(new fixType(2, "Not supported for now"));
+				cbFixType.Items.Add(new fixType(8, "Velocity computed using instantaneous Doppler"));
+				cbFixType.Items.Add(new fixType(16, "Single point position"));
+				cbFixType.Items.Add(new fixType(17, "Pseudorange differential solution"));
+				cbFixType.Items.Add(new fixType(18, "Solution calculated using corrections from an SBAS"));
+				cbFixType.Items.Add(new fixType(32, "Floating L1 ambiguity solution"));
+				cbFixType.Items.Add(new fixType(33, "Floating ionosphere ambiguity solution"));
+				cbFixType.Items.Add(new fixType(34, "Floating narrow-lane ambiguity solution"));
+				cbFixType.Items.Add(new fixType(48, "Integer L1 ambiguity solution"));
+				cbFixType.Items.Add(new fixType(49, "Integer wide-lane ambiguity solution"));
+				cbFixType.Items.Add(new fixType(50, "Integer narrow-lane ambiguity solution"));
+				cbFixType.Items.Add(new fixType(52, "INS position solution"));
+				cbFixType.Items.Add(new fixType(53, "INS pseudorange single point solution – no DGPS corrections"));
+				cbFixType.Items.Add(new fixType(54, "INS pseudorange differential solution"));
+				cbFixType.Items.Add(new fixType(55, "INS RTK floating point ambiguities solution"));
+				cbFixType.Items.Add(new fixType(56, "INS RTK fixed ambiguities solution"));
+				cbFixType.Items.Add(new fixType(68, "PPP in convergence"));
+				cbFixType.Items.Add(new fixType(69, "PPP positioning"));
+				cbFixType.Items.Add(new fixType(70, "PPP fixed solution, PPP_AR status"));
+				cbFixType.Items.Add(new fixType(71, "PPP fixed solution, PPP_RTK status"));
+			}
+			else
+			{
+				cbFixType.Items.Add(new fixType(0, "no fix"));
+				cbFixType.Items.Add(new fixType(1, "dead reckoning only"));
+				cbFixType.Items.Add(new fixType(2, "2D-fix"));
+				cbFixType.Items.Add(new fixType(3, "3D-fix"));
+				cbFixType.Items.Add(new fixType(4, "GNSS + dead reckoning combined"));
+				cbFixType.Items.Add(new fixType(5, "time only fix"));
+			}
+			if (cbFixType.Items.Count > 0)
+				cbFixType.SelectedIndex = 0;
+		}
 
         private void userControl11_Load(object sender, EventArgs e)
         {

@@ -1,0 +1,498 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace GPS_Bluetooth
+{
+	struct structBL
+	{
+		public string			strName;
+		public bool									bConnected;
+		public InTheHand.Net.BluetoothAddress		Address;
+	};
+	enum eBT_STATE
+	{
+		ebtWAITING_MAGIC_NUMBER			= 0,
+		ebtWAITING_VERSION				= 1,
+		ebtWAITING_LENGTH				= 2,
+		ebtWAITING_DATA					= 3
+	};
+	public struct structBT_DATA
+	{
+		public int						iLengthGot;
+		public byte[]					byteArray;
+		public byte						ui8MagicNumber;
+		public byte						ui8Version;
+		public byte						ui8Length;
+		public byte						ui8Bits;
+		public double					dLatitude;
+		public double					dLongitude;
+		public double					dHeight;
+		public double					dMSL;
+		public UInt32					ui32HAcc;			// Horizontal accuracy estimate: mm * 0.1
+		public UInt32					ui32VAcc;			// Vertical accuracy estimate: mm * 0.1
+		public byte						ui8FixType;
+		public byte						ui8NumSV;
+		public UInt16					ui16CRC;
+		public DateTime					datTimeStamp;
+	};
+	public partial class frmMain : Form
+	{
+		private bool				m_bSearching;
+		private List<structBL>		m_listNewClients;
+		private List<structBL>		m_listClients;
+		public Configuration		m_config;
+		private InTheHand.Net.Sockets.BluetoothClient			m_Client;
+		private System.Net.Sockets.NetworkStream				m_ClientStream;
+		private eBT_STATE										m_eBT_State;
+		private structBT_DATA									m_structBT_Data;
+		private int												m_iTrash_Length;
+		private DateTime										m_datLastPacket;
+		private UInt32											m_ui32CRC_Error;
+		private frmSimulator									m_cSimulator;
+
+		public frmMain()
+		{
+			m_ui32CRC_Error = 0;
+			m_bSearching = false;
+			m_listNewClients = null;
+			m_eBT_State = eBT_STATE.ebtWAITING_MAGIC_NUMBER;
+			m_structBT_Data = new structBT_DATA();
+			m_structBT_Data.ui8MagicNumber = 0xAC;
+			m_iTrash_Length = 0;
+			m_config = Configuration.Deserialize("GPS_Bluetooth.xml");
+			InitializeComponent();
+
+			chineseReceiver.CheckedChanged += chineseReceiver_CheckedChanged;
+			PopulateFixTypeItems();
+
+			userControl11.m_bMSL = false;
+			userControl12.m_bMSL = true;
+
+			tbDeviceAddress.Text = m_config.BT_Device_Address;
+			timer1.Tick += frmMain_OnTimer;
+
+			timer1.Interval = 20;
+			timer1.Enabled = true;
+			// ListClients();
+		}
+
+		private void frmMain_OnTimer(object sender, EventArgs e)
+		{
+			int				iIndex;
+			int				iData;
+			string			strName;
+
+			btSearchBluetooth.Enabled = !m_bSearching;
+			if (m_listNewClients != null && !m_bSearching)
+			{
+				for (int i = 0; i < m_listNewClients.Count; ++i)
+				{
+					strName = m_listNewClients[i].strName + (m_listNewClients[i].bConnected ? " (Verbunden)" : "");
+					iIndex = lbDevices.Items.Add(strName);
+				}
+				m_listClients = m_listNewClients;
+				m_listNewClients = null;
+			}
+
+			if (m_ClientStream != null)
+			{
+				while (m_ClientStream.DataAvailable)
+				{
+					iData = m_ClientStream.ReadByte();
+					if (iData >= 0)
+					{
+						switch (m_eBT_State)
+						{
+							case eBT_STATE.ebtWAITING_MAGIC_NUMBER:
+								if (m_structBT_Data.byteArray != null)
+									m_structBT_Data.byteArray = null;
+								m_structBT_Data.iLengthGot = 0;
+
+								if (iData == m_structBT_Data.ui8MagicNumber)
+								{
+									m_eBT_State = eBT_STATE.ebtWAITING_VERSION;
+									if (m_iTrash_Length > 0)
+									{
+										System.Diagnostics.Trace.WriteLine(string.Format("Trash Data Length={0}", m_iTrash_Length));
+										m_iTrash_Length = 0;
+									}
+								}
+								else
+								{
+									++m_iTrash_Length;
+								}
+								break;
+							case eBT_STATE.ebtWAITING_VERSION:
+								m_structBT_Data.ui8Version = (byte)iData;
+								m_eBT_State = eBT_STATE.ebtWAITING_LENGTH;
+								break;
+							case eBT_STATE.ebtWAITING_LENGTH:
+								m_structBT_Data.ui8Length = (byte)iData;
+								m_structBT_Data.iLengthGot = 3;
+								if (m_structBT_Data.ui8Length < 4)
+									m_eBT_State = eBT_STATE.ebtWAITING_MAGIC_NUMBER;
+								m_structBT_Data.byteArray = new byte[m_structBT_Data.ui8Length];
+								m_structBT_Data.byteArray[0] = m_structBT_Data.ui8MagicNumber;
+								m_structBT_Data.byteArray[1] = m_structBT_Data.ui8Version;
+								m_structBT_Data.byteArray[2] = m_structBT_Data.ui8Length;
+								m_eBT_State = eBT_STATE.ebtWAITING_DATA;
+								break;
+							case eBT_STATE.ebtWAITING_DATA:
+								m_structBT_Data.byteArray[m_structBT_Data.iLengthGot] = (byte)iData;
+								++m_structBT_Data.iLengthGot;
+								if (m_structBT_Data.iLengthGot >= m_structBT_Data.ui8Length)
+								{
+									m_structBT_Data.ui8Bits = m_structBT_Data.byteArray[3];
+
+									UInt16		ui16Year;
+									byte		byteValid;
+									byte		byteMonth;
+									byte		byteDay;
+									byte		byteHour;
+									byte		byteMinute;
+									byte		byteSecond;
+									Int32		i32Nanosecond;
+									UInt16		ui16CRC;
+
+									ui16Year = BitConverter.ToUInt16(m_structBT_Data.byteArray, 4);
+									byteValid = m_structBT_Data.byteArray[6];
+									byteMonth = m_structBT_Data.byteArray[7];
+									byteDay = m_structBT_Data.byteArray[8];
+									byteHour = m_structBT_Data.byteArray[9];
+									byteMinute = m_structBT_Data.byteArray[10];
+									byteSecond = m_structBT_Data.byteArray[11];
+									i32Nanosecond = BitConverter.ToInt16(m_structBT_Data.byteArray, 12);
+
+									if (ui16Year != 0 && byteMonth != 0 && byteDay != 0)
+										m_structBT_Data.datTimeStamp = new DateTime(ui16Year, byteMonth, byteDay, byteHour, byteMinute, byteSecond, (int)Math.Round(i32Nanosecond * 0.000001));
+									else
+										m_structBT_Data.datTimeStamp = DateTime.MinValue;
+
+									m_structBT_Data.dLatitude = BitConverter.ToDouble(m_structBT_Data.byteArray, 16);
+									m_structBT_Data.dLongitude = BitConverter.ToDouble(m_structBT_Data.byteArray, 24);
+									m_structBT_Data.dHeight = BitConverter.ToDouble(m_structBT_Data.byteArray, 32);
+									m_structBT_Data.dMSL = BitConverter.ToDouble(m_structBT_Data.byteArray, 40);
+
+									m_structBT_Data.ui32HAcc = BitConverter.ToUInt32(m_structBT_Data.byteArray, 48);
+									m_structBT_Data.ui32VAcc = BitConverter.ToUInt32(m_structBT_Data.byteArray, 52);
+
+									m_structBT_Data.ui8FixType = m_structBT_Data.byteArray[56];
+									m_structBT_Data.ui8NumSV = m_structBT_Data.byteArray[57];
+
+									m_structBT_Data.ui16CRC = BitConverter.ToUInt16(m_structBT_Data.byteArray, 58);
+
+									// Komischerweise wird die Struct auf 8 aufgerundet übertragen!!!
+									// nein nicht komisch - hinten 4 Byte Reserve auf 64
+									ui16CRC = Crc16.CRC16_Calc(m_structBT_Data.byteArray, 58);
+
+									if (ui16CRC != m_structBT_Data.ui16CRC)
+									{
+										++m_ui32CRC_Error;
+										tbCRC_Error.Text = string.Format("{0}", m_ui32CRC_Error);
+									}
+									else
+									{
+										userControl11.SetCurrentPosition(m_structBT_Data.dLatitude, m_structBT_Data.dLongitude, m_structBT_Data.dMSL);
+										userControl12.SetCurrentPosition(m_structBT_Data.dLatitude, m_structBT_Data.dLongitude, m_structBT_Data.dMSL);
+
+										tbLatitude.Text = string.Format("{0}", m_structBT_Data.dLatitude);
+										tbLongitude.Text = string.Format("{0}", m_structBT_Data.dLongitude);
+										tbHeight.Text = string.Format("{0}", m_structBT_Data.dHeight);
+										tbMSL.Text = string.Format("{0}", m_structBT_Data.dMSL);
+
+										for (int i = 0; i < cbFixType.Items.Count; i++)
+										{
+											classFIX_TYPE item = cbFixType.Items[i] as classFIX_TYPE;
+											if (item != null && item.Value == m_structBT_Data.ui8FixType)
+											{
+												cbFixType.SelectedIndex = i;
+												break;
+											}
+										}
+										tbNumSV.Text = string.Format("{0}", m_structBT_Data.ui8NumSV);
+
+										tbHAcc.Text = string.Format("{0}", m_structBT_Data.ui32HAcc);
+										tbVAcc.Text = string.Format("{0}", m_structBT_Data.ui32VAcc);
+
+										cbSamplePoint.Checked = (m_structBT_Data.ui8Bits & 0x01) != 0x00;
+                                        rtkConnected.Checked = (m_structBT_Data.ui8Bits & 0x04) != 0x00;
+                                        chineseReceiver.Checked = (m_structBT_Data.ui8Bits & 0x02) != 0x00;
+                                    }
+									m_eBT_State = eBT_STATE.ebtWAITING_MAGIC_NUMBER;
+
+#if false
+									System.Diagnostics.Trace.WriteLine(string.Format("{0:00}.{1:000}: BT_Data Version={2}, DateTime={3}{4}",
+										DateTime.Now.Second, DateTime.Now.Millisecond, m_structBT_Data.ui8Version,
+										m_structBT_Data.datTimeStamp,
+										m_datLastPacket != DateTime.MinValue ? string.Format(" delay={0:0}ms", (DateTime.Now - m_datLastPacket).TotalMilliseconds) : ""));
+#endif
+
+									m_datLastPacket = DateTime.Now;
+								}
+								break;
+						}
+					}
+				}
+			}
+
+			if (m_cSimulator != null)
+				m_cSimulator.TickTack();
+		}
+
+		private void ListClients()
+		{
+			try
+			{
+				structBL structX;
+				List<structBL> listNewClients;
+
+				m_bSearching = true;
+
+				InTheHand.Net.Sockets.BluetoothClient client = new InTheHand.Net.Sockets.BluetoothClient();
+				List<string> items = new List<string>();
+				InTheHand.Net.Sockets.BluetoothDeviceInfo[] devices = client.DiscoverDevicesInRange();
+				listNewClients = new List<structBL>();
+				structX = new structBL();
+				foreach (InTheHand.Net.Sockets.BluetoothDeviceInfo d in devices)
+				{
+					structX.strName = d.DeviceName;
+					structX.Address = d.DeviceAddress;
+					structX.bConnected = d.Connected;
+					listNewClients.Add(structX);
+				}
+				m_listNewClients = listNewClients;
+			}
+			catch (Exception e)
+			{
+				MessageBox.Show(this, "Error Search Bluetooth", e.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+			m_bSearching = false;
+		}
+
+		private void btSearchBluetooth_Click(object sender, EventArgs e)
+		{
+			System.Threading.Thread newThread = new System.Threading.Thread(ListClients);
+
+			lbDevices.Items.Clear();
+			newThread.Start();
+		}
+
+		private void btPair_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				InTheHand.Net.Sockets.BluetoothDeviceInfo d;
+				InTheHand.Net.BluetoothAddress Address;
+
+				Address = m_listClients[lbDevices.SelectedIndex].Address;
+
+				d = new InTheHand.Net.Sockets.BluetoothDeviceInfo(Address);
+
+				bool pairResult = InTheHand.Net.Bluetooth.BluetoothSecurity.PairRequest(Address, null);
+				if (pairResult)
+				{
+					Console.WriteLine("Success");
+				}
+				else
+				{
+					Console.WriteLine("Fail"); // Instantly fails
+				}
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show(this, "Error Pair Bluetooth", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+			}
+		}
+
+		public static byte[] ConvertHexStringToByteArray(string hexString)
+		{
+			if (hexString.Length % 2 != 0)
+			{
+				throw new ArgumentException(String.Format(System.Globalization.CultureInfo.InvariantCulture, "The binary key cannot have an odd number of digits: {0}", hexString));
+			}
+
+			byte[] data = new byte[hexString.Length / 2];
+			for (int index = 0; index < data.Length; index++)
+			{
+				string byteValue = hexString.Substring(index * 2, 2);
+				data[index] = byte.Parse(byteValue, System.Globalization.NumberStyles.HexNumber, System.Globalization.CultureInfo.InvariantCulture);
+			}
+
+			return data; 
+		}
+
+		private void btConnect_Click(object sender, EventArgs e)
+		{
+			InTheHand.Net.BluetoothAddress				Address;
+			//InTheHand.Net.Sockets.BluetoothClient		Client;
+			//long										lAddress;
+			byte[]										arrayTemp;
+			byte[]										arrayAddress;
+
+			if (m_Client != null)
+			{
+				btConnect.Text = "Connect";
+
+				try
+				{
+					if (m_ClientStream != null)
+					{
+						m_ClientStream.Dispose();
+						m_ClientStream = null;
+					}
+					if (m_Client.Connected)
+						m_Client.Close();
+				}
+				catch (Exception /*err*/)
+				{
+				}
+				try
+				{
+					m_Client.Dispose();
+					m_Client = null;
+				}
+				catch (Exception /*err*/)
+				{
+				}
+				return;
+			}
+
+			arrayTemp = ConvertHexStringToByteArray(tbDeviceAddress.Text);
+			arrayAddress = new byte[arrayTemp.Length];
+			for (int i = 0; i < arrayTemp.Length; ++i)
+				arrayAddress[i] = arrayTemp[arrayTemp.Length - i - 1];
+			Address = new InTheHand.Net.BluetoothAddress(arrayAddress);
+
+            try
+            {
+                m_Client = new InTheHand.Net.Sockets.BluetoothClient();
+				m_Client.Connect(Address, InTheHand.Net.Bluetooth.BluetoothService.SerialPort);
+			}
+			catch (Exception err)
+			{
+				MessageBox.Show(this, "Error Connect", err.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+				try { m_Client.Dispose(); } catch { /* ignore */ }
+				m_Client = null;
+			}
+
+			if (m_Client != null)
+			{
+				if (m_Client.Connected)
+				{
+					m_ClientStream = m_Client.GetStream();
+
+					btConnect.Text = "Disconnect";
+				}
+			}
+		}
+
+		private void frmMain_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			m_config.BT_Device_Address = tbDeviceAddress.Text;
+			if (m_cSimulator != null)
+			{
+				m_config.Port_Simulate = m_cSimulator.GetPort();
+				m_cSimulator.SaveSettings();
+			}
+			Configuration.Serialize("GPS_Bluetooth.xml", m_config);
+		}
+
+		private void lbDevices_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			if (lbDevices.SelectedIndex < m_listClients.Count && lbDevices.SelectedIndex >= 0 && m_listClients.Count > 0)
+			{
+				tbDeviceAddress.Text = m_listClients[lbDevices.SelectedIndex].Address.ToString();
+			}
+		}
+
+		private void frmMain_Resize(object sender, EventArgs e)
+		{
+			userControl11.Invalidate();
+			userControl12.Invalidate();
+		}
+
+		private void btCenter_Click(object sender, EventArgs e)
+		{
+			userControl11.SetCenter();
+			userControl12.SetCenter();
+		}
+
+		private void btZoom_Click(object sender, EventArgs e)
+		{
+			userControl11.ToggleZoom();
+			userControl12.ToggleZoom();
+		}
+
+		private void btSimulator_Click(object sender, EventArgs e)
+		{
+			if (m_cSimulator == null)
+				m_cSimulator = new frmSimulator(m_config);
+			m_cSimulator.Show();
+			m_cSimulator.SetPort(m_config.Port_Simulate);
+		}
+
+        private void zoomInBtn_Click(object sender, EventArgs e)
+        {
+            userControl11.IncreaseZoom();
+            userControl12.IncreaseZoom();
+        }
+
+		private void zoomOutBtn_Click(object sender, EventArgs e)
+		{
+			userControl11.DecreaseZoom();
+			userControl12.DecreaseZoom();
+		}
+
+		private void chineseReceiver_CheckedChanged(object sender, EventArgs e)
+		{
+			PopulateFixTypeItems();
+		}
+
+		private void PopulateFixTypeItems()
+		{
+			cbFixType.Items.Clear();
+			if (chineseReceiver.Checked)
+			{
+				cbFixType.Items.Add(new classFIX_TYPE(0, "No solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(1, "Position has been fixed by the FIX position position command or by position averaging."));
+				cbFixType.Items.Add(new classFIX_TYPE(2, "Not supported for now"));
+				cbFixType.Items.Add(new classFIX_TYPE(8, "Velocity computed using instantaneous Doppler"));
+				cbFixType.Items.Add(new classFIX_TYPE(16, "Single point position"));
+				cbFixType.Items.Add(new classFIX_TYPE(17, "Pseudorange differential solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(18, "Solution calculated using corrections from an SBAS"));
+				cbFixType.Items.Add(new classFIX_TYPE(32, "Floating L1 ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(33, "Floating ionosphere ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(34, "Floating narrow-lane ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(48, "Integer L1 ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(49, "Integer wide-lane ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(50, "Integer narrow-lane ambiguity solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(52, "INS position solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(53, "INS pseudorange single point solution \u2013 no DGPS corrections"));
+				cbFixType.Items.Add(new classFIX_TYPE(54, "INS pseudorange differential solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(55, "INS RTK floating point ambiguities solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(56, "INS RTK fixed ambiguities solution"));
+				cbFixType.Items.Add(new classFIX_TYPE(68, "PPP in convergence"));
+				cbFixType.Items.Add(new classFIX_TYPE(69, "PPP positioning"));
+				cbFixType.Items.Add(new classFIX_TYPE(70, "PPP fixed solution, PPP_AR status"));
+				cbFixType.Items.Add(new classFIX_TYPE(71, "PPP fixed solution, PPP_RTK status"));
+			}
+			else
+			{
+				cbFixType.Items.Add(new classFIX_TYPE(0, "no fix"));
+				cbFixType.Items.Add(new classFIX_TYPE(1, "dead reckoning only"));
+				cbFixType.Items.Add(new classFIX_TYPE(2, "2D-fix"));
+				cbFixType.Items.Add(new classFIX_TYPE(3, "3D-fix"));
+				cbFixType.Items.Add(new classFIX_TYPE(4, "GNSS + dead reckoning combined"));
+				cbFixType.Items.Add(new classFIX_TYPE(5, "time only fix"));
+			}
+		}
+    }
+}

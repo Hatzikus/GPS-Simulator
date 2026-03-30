@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmSimulator));
             this.tbPort = new System.Windows.Forms.TextBox();
             this.cbOpen = new System.Windows.Forms.CheckBox();
             this.cbSend = new System.Windows.Forms.CheckBox();
@@ -44,6 +45,8 @@
             this.samplePoint = new System.Windows.Forms.CheckBox();
             this.userControl12 = new GPS_Bluetooth.UserControl1();
             this.userControl11 = new GPS_Bluetooth.UserControl1();
+            this.rtkCheck = new System.Windows.Forms.CheckBox();
+            this.receiverCheck = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // tbPort
@@ -80,13 +83,6 @@
             // 
             this.cbFixType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFixType.FormattingEnabled = true;
-            this.cbFixType.Items.AddRange(new object[] {
-            "no fix",
-            "dead reckoning only",
-            "2D-fix",
-            "3D-fix",
-            "GNSS + dead reckoning combined",
-            "time only fix"});
             this.cbFixType.Location = new System.Drawing.Point(543, 19);
             this.cbFixType.Margin = new System.Windows.Forms.Padding(6);
             this.cbFixType.Name = "cbFixType";
@@ -205,7 +201,7 @@
             this.userControl11.Margin = new System.Windows.Forms.Padding(12);
             this.userControl11.Name = "userControl11";
             this.userControl11.ShowCurrentPosition = false;
-            this.userControl11.Size = new System.Drawing.Size(1665, 612);
+            this.userControl11.Size = new System.Drawing.Size(1836, 612);
             this.userControl11.TabIndex = 24;
             this.userControl11.Zoomed = false;
             this.userControl11.Load += new System.EventHandler(this.userControl11_Load);
@@ -216,11 +212,35 @@
             this.userControl11.MouseMove += new System.Windows.Forms.MouseEventHandler(this.userControl11_MouseMove);
             this.userControl11.MouseUp += new System.Windows.Forms.MouseEventHandler(this.userControl11_MouseUp);
             // 
+            // rtkCheck
+            // 
+            this.rtkCheck.AutoSize = true;
+            this.rtkCheck.Location = new System.Drawing.Point(2067, 29);
+            this.rtkCheck.Margin = new System.Windows.Forms.Padding(6);
+            this.rtkCheck.Name = "rtkCheck";
+            this.rtkCheck.Size = new System.Drawing.Size(86, 29);
+            this.rtkCheck.TabIndex = 40;
+            this.rtkCheck.Text = "RTK";
+            this.rtkCheck.UseVisualStyleBackColor = true;
+            // 
+            // receiverCheck
+            // 
+            this.receiverCheck.AutoSize = true;
+            this.receiverCheck.Location = new System.Drawing.Point(1926, 29);
+            this.receiverCheck.Margin = new System.Windows.Forms.Padding(6);
+            this.receiverCheck.Name = "receiverCheck";
+            this.receiverCheck.Size = new System.Drawing.Size(129, 29);
+            this.receiverCheck.TabIndex = 41;
+            this.receiverCheck.Text = "Receiver";
+            this.receiverCheck.UseVisualStyleBackColor = true;
+            // 
             // frmSimulator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1994, 700);
+            this.ClientSize = new System.Drawing.Size(2176, 700);
+            this.Controls.Add(this.receiverCheck);
+            this.Controls.Add(this.rtkCheck);
             this.Controls.Add(this.samplePoint);
             this.Controls.Add(this.centerBtn);
             this.Controls.Add(this.zoomOutBtn);
@@ -238,9 +258,10 @@
             this.Controls.Add(this.userControl11);
             this.Controls.Add(this.tbPort);
             this.DoubleBuffered = true;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "frmSimulator";
-            this.Text = "frmSimulator";
+            this.Text = "Torch Simulator";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmSimulator_FormClosing);
             this.Load += new System.EventHandler(this.frmSimulator_Load);
             this.Resize += new System.EventHandler(this.frmSimulator_Resize);
@@ -267,5 +288,7 @@
         private System.Windows.Forms.Button zoomOutBtn;
         private System.Windows.Forms.Button centerBtn;
         private System.Windows.Forms.CheckBox samplePoint;
+        private System.Windows.Forms.CheckBox rtkCheck;
+        private System.Windows.Forms.CheckBox receiverCheck;
     }
 }
